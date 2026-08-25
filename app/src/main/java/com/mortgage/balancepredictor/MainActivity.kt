@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         with(binding.webView.settings) {
             javaScriptEnabled = true
             domStorageEnabled = true
-            databaseEnabled = true
             allowFileAccess = true
             allowContentAccess = true
             useWideViewPort = true
