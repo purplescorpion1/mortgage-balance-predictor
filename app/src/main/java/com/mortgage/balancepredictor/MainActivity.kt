@@ -2,6 +2,7 @@ package com.mortgage.balancepredictor
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.webkit.RenderProcessGoneDetail
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -48,6 +49,14 @@ class MainActivity : AppCompatActivity() {
             @Deprecated("Deprecated in Java/Kotlin, handle page navigation in app assets")
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 return false
+            }
+
+            override fun onRenderProcessGone(view: WebView?, detail: RenderProcessGoneDetail?): Boolean {
+                view?.let {
+                    binding.mainLayout.removeView(it)
+                    it.destroy()
+                }
+                return true
             }
         }
 
